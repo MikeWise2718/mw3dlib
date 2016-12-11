@@ -1,13 +1,12 @@
 #' Render a compObj object in rgl
 #' 
-#' @param ojb the compobj to render
+#' @param obj the compobj to render
 #' @param exclude Layers to exclude
 #' @param include If layers have been excluded, then these layers will be included anyway
 #' @param lax If true then local 3-axis markers will be rendered for every component (default F)
 #' @param wireframe If true object will be rendered as wireframe, otherwise it is shaded (default F)
 #' @param quiet A boolean value that supresses execution feedback output (default T)
-#' @examples
-#' robj <- renderCompObj3d("crazyflie",lax=T)
+#' @export renderCompObj3d
 renderCompObj3d <- function(obj,exclude = NULL,include = NULL,lax = F,quiet = T,wireframe = F) {
   # Plot a ComObj3d
   # potentially scaled, rotated and translated
@@ -37,15 +36,15 @@ renderCompObj3d <- function(obj,exclude = NULL,include = NULL,lax = F,quiet = T,
     mvi <- t(as.matrix(vi1df))
 
     # make the mesh, then rotate and transform if necssary
-    mesh <- tmesh3d(mpt,mvi)
+    mesh <- rgl::tmesh3d(mpt,mvi)
 
     sca <- cdf$sca[[cidx]]  # double brackets because these are lists
     rot <- cdf$rot[[cidx]]
     trn <- cdf$trn[[cidx]]
 
-    mesh <- scale3d(mesh,x = sca[1],y = sca[2],z = sca[3])
-    mesh <- rotate3d(mesh,matrix = rot)
-    mesh <- translate3d(mesh,trn[1],trn[2],trn[3])
+    mesh <- rgl::scale3d(mesh,x = sca[1],y = sca[2],z = sca[3])
+    mesh <- rgl::rotate3d(mesh,matrix = rot)
+    mesh <- rgl::translate3d(mesh,trn[1],trn[2],trn[3])
 
     # render it
     if (!quiet) {
@@ -65,9 +64,9 @@ renderCompObj3d <- function(obj,exclude = NULL,include = NULL,lax = F,quiet = T,
     }
     if (!excludeit) {
       if (wireframe) {
-        wire3d(mesh,color = clr,alpha = pdf$amb.a[pidx])
+        rgl::wire3d(mesh,color = clr,alpha = pdf$amb.a[pidx])
       } else {
-        shade3d(mesh,color = clr,alpha = pdf$amb.a[pidx])
+        rgl::shade3d(mesh,color = clr,alpha = pdf$amb.a[pidx])
       }
       if (lax) {
         addAxesToRgl(10,sca=NULL,trn=trn,rot=rot) # show the local coordinate system

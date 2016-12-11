@@ -4,8 +4,8 @@
 \alias{addAxesToRgl}
 \title{Add axis markers at local coordinate space origin}
 \usage{
-addAxesToRgl(len = 1, sca = NULL, rot = NULL, trn = NULL, tit = "",
-  charexp = 1)
+addAxesToRgl(len = 1, sca = NULL, rot = NULL, trn = NULL,
+  title = NULL, charexp = 1)
 }
 \arguments{
 \item{len}{The length of each axis}
@@ -15,6 +15,8 @@ addAxesToRgl(len = 1, sca = NULL, rot = NULL, trn = NULL, tit = "",
 \item{rot}{rotation matrix  for local coord system}
 
 \item{trn}{translation vector for local coord system (1 coord per axis)}
+
+\item{title}{An optional title}
 
 \item{charexp}{character expansion factor for axis label}
 }

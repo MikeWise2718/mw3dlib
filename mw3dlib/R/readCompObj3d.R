@@ -3,8 +3,7 @@
 #' @param quiet A boolean value that supresses reading feedback
 #' @param objnameroot the root object name - this forms part of the filenames
 #' @param objdir the root object directory
-#' @examples
-#' robj <- readCompObj3d("crazyflie")
+#' @export readCompObj3d
 readCompObj3d <- function(objnameroot,objdir = NULL,quiet = T) {
   # Read a set of files specifying a object with parts, components, points and vertice indexes
   # saved in four csv files

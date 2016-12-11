@@ -16,7 +16,4 @@ readCompObj3d(objnameroot, objdir = NULL, quiet = T)
 \description{
 Read in a compObj object from files
 }
-\examples{
-robj <- readCompObj3d("crazyflie")
-}
 

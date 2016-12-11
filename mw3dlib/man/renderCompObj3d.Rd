@@ -8,6 +8,8 @@ renderCompObj3d(obj, exclude = NULL, include = NULL, lax = F, quiet = T,
   wireframe = F)
 }
 \arguments{
+\item{obj}{the compobj to render}
+
 \item{exclude}{Layers to exclude}
 
 \item{include}{If layers have been excluded, then these layers will be included anyway}
@@ -17,13 +19,8 @@ renderCompObj3d(obj, exclude = NULL, include = NULL, lax = F, quiet = T,
 \item{quiet}{A boolean value that supresses execution feedback output (default T)}
 
 \item{wireframe}{If true object will be rendered as wireframe, otherwise it is shaded (default F)}
-
-\item{ojb}{the compobj to render}
 }
 \description{
 Render a compObj object in rgl
-}
-\examples{
-robj <- renderCompObj3d("crazyflie",lax=T)
 }
 

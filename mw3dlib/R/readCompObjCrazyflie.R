@@ -1,6 +1,7 @@
 #' Read in the Crazyflie files
 #' 
 #' @param quiet A boolean value that supresses reading feedback
+#' @export readCompObjCrazyflie
 #' @examples
 #' robj <- readCompObjCrazyflie()
 readCompObjCrazyflie <- function(quiet = T) {

@@ -1,3 +1,14 @@
+#' Converts a 3 vector of rgb values (between 0 and 1) to a string color
+#' 
+#' @param rvek vector of red values between 0 and 1
+#' @param gvek vector of green values between 0 and 1
+#' @param bvek vector of red values between 0 and 1
+#' @export rgbToStringColor
+#' @examples
+#' rgbToStringColor(1,0,0)
+#' # returns [1] "#ff0000"
+#' rgbToStringColor(c(1,0),c(1,0),c(1,0))
+#' # returns [1] "#ffffff" "#000000"
 rgbToStringColor <- function(rvek,gvek,bvek) {
   # Converts a 3 vector of rgb values (between 0 and 1)
   # to a single vector of color in R character format
@@ -12,4 +23,5 @@ rgbToStringColor <- function(rvek,gvek,bvek) {
   m <- matrix(c(rvek,gvek,bvek),nv,3) # matrix with row as r,g,b
   l <- lapply(1:nv,function(x) m[x,]) # now unwrap into a list of rgb's
   rgb <- sapply(l,colVekToStringColor)
+  return(rgb)
 }

@@ -4,10 +4,12 @@
 #' @param sca scale vector for local coord system (1 coord per axis)
 #' @param rot rotation matrix  for local coord system
 #' @param trn translation vector for local coord system (1 coord per axis)
+#' @param title An optional title
 #' @param charexp character expansion factor for axis label
+#' @export addAxesToRgl
 #' @examples
 #' addAxesToRgl()
-addAxesToRgl <- function(len = 1,sca = NULL,rot = NULL,trn = NULL,tit = "",charexp = 1) {
+addAxesToRgl <- function(len = 1,sca = NULL,rot = NULL,trn = NULL,title = NULL,charexp = 1) {
   # Dislplay 3-legged axis (X,Y,Z)
   # potentially scaled, rotated and translated
 
@@ -47,12 +49,15 @@ addAxesToRgl <- function(len = 1,sca = NULL,rot = NULL,trn = NULL,tit = "",chare
     zax[2,] <- zax[2,] + trn
   }
 
-  lines3d( xax,color = c("red"))
-  lines3d( yax,color = c("green"))
-  lines3d( zax,color = c("blue"))
+  rgl::lines3d( xax,color = "red")
+  rgl::lines3d(yax,color = "green")
+  rgl::lines3d(zax,color = "blue")
 
-  text3d(xax[2,],text="X",color = c("red"),cex = charexp)
-  text3d(yax[2,],text="Y",color = c("green"),cex = charexp)
-  text3d(zax[2,],text="Z",color = c("blue"),cex = charexp)
+  rgl::text3d(xax[2,],text = "X",color = "red",cex = charexp)
+  rgl::text3d(yax[2,],text = "Y",color = "green",cex = charexp)
+  rgl::text3d(zax[2,],text = "Z",color = "blue",cex = charexp)
 
+  if (!is.null(title)) {
+    rgl::text3d(xax[1,],text = title,color = "blue",cex = charexp)
+  }
 }

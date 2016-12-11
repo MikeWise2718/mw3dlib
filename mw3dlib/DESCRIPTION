@@ -4,8 +4,8 @@ Title: 3D graphics helper routines
 Version: 0.1.0
 Author: Mike Wise
 Maintainer: Who to complain to <mikewise1618@gmail.com>
-Description: None for the moment
-License: None really
+Description: A hodge-podge of utility functions.
+License: MIT
 LazyData: TRUE
 Suggests:
     testthat,
