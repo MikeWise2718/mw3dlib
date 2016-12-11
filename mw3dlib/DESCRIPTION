@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: Mike Wise
 Maintainer: Who to complain to <mikewise1618@gmail.com>
 Description: A hodge-podge of utility functions.
-License: MIT
+License: MIT + file LICENSE
 LazyData: TRUE
 Suggests:
     testthat,
