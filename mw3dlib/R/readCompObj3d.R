@@ -1,4 +1,11 @@
-readCompObj3d <- function(cfdir = "./",objnameroot,quiet = T) {
+#' Read in a compObj object from files
+#' 
+#' @param quiet A boolean value that supresses reading feedback
+#' @param objnameroot the root object name - this forms part of the filenames
+#' @param objdir the root object directory
+#' @examples
+#' robj <- readCompObj3d("crazyflie")
+readCompObj3d <- function(objnameroot,objdir = NULL,quiet = T) {
   # Read a set of files specifying a object with parts, components, points and vertice indexes
   # saved in four csv files
   # Each component belongs to exactly one part
@@ -10,7 +17,11 @@ readCompObj3d <- function(cfdir = "./",objnameroot,quiet = T) {
   # Note that this routine also crunches some of the values for easier consumption later
 
   # Components
-  fnameroot <- sprintf("%s%s",cfdir,objnameroot)
+  fnameroot <- objnameroot
+  if (!is.null(objdir)) {
+    fnameroot <- sprintf("%s/%s",objdir,objnameroot)
+    fnameroot <- gsub("//","/",fnameroot)
+  }
   fname <- sprintf("%s-components.csv",fnameroot)
   cdf <- read.csv(fname)
   cdf <- cdf[cdf$id > 0,]

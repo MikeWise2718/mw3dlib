@@ -1,3 +1,13 @@
+#' Render a compObj object in rgl
+#' 
+#' @param ojb the compobj to render
+#' @param exclude Layers to exclude
+#' @param include If layers have been excluded, then these layers will be included anyway
+#' @param lax If true then local 3-axis markers will be rendered for every component (default F)
+#' @param wireframe If true object will be rendered as wireframe, otherwise it is shaded (default F)
+#' @param quiet A boolean value that supresses execution feedback output (default T)
+#' @examples
+#' robj <- renderCompObj3d("crazyflie",lax=T)
 renderCompObj3d <- function(obj,exclude = NULL,include = NULL,lax = F,quiet = T,wireframe = F) {
   # Plot a ComObj3d
   # potentially scaled, rotated and translated
@@ -60,7 +70,7 @@ renderCompObj3d <- function(obj,exclude = NULL,include = NULL,lax = F,quiet = T,
         shade3d(mesh,color = clr,alpha = pdf$amb.a[pidx])
       }
       if (lax) {
-        addAxesToRgl(10,t = trn,r = rot) # show the local coordinate system
+        addAxesToRgl(10,sca=NULL,trn=trn,rot=rot) # show the local coordinate system
       }
     }
   }
